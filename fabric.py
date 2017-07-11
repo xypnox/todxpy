@@ -1,9 +1,9 @@
 class Todo:
-    def __init__(self, content="", status=""):
+    def __init__(self, content="", status=" "):
         self.content = content
         self.status = status
 
-class List:
+class Stak:
     def __init__(self, title, tags=[]):
         self.inventory = []
         self.title = title
@@ -15,7 +15,10 @@ class List:
     def change_title(self, title):
         self.title = title
 
-    def view_list(self):
+    def add_todo(self, content, status=" "):
+        self.inventory.push(Todo(content, status))
+
+    def view_stak(self):
         for item in self.inventory:
             print(self.title)
             if len(self.tags) != 0:
