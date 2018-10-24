@@ -2,10 +2,18 @@ class Todo:
     def __init__(self, content="", status=" "):
         self.content = content
         self.status = status
+        self._index = 0
+    
+    def __str__(self):
+        return "[" + self.status + "] " + self.content
 
-class Stak:
+
+class TodoList:
     def __init__(self, title, tags=[]):
-        self.inventory = []
+        """
+        This function creates and initialises empty TodoList with title and tags
+        """
+        self.inventory = [] # list of objects of class Todo 
         self.title = title
         self.tags = tags
 
@@ -15,15 +23,63 @@ class Stak:
     def change_title(self, title):
         self.title = title
 
-    def add_todo(self, content, status=" "):
-        self.inventory.push(Todo(content, status))
-
-    def view_stak(self):
+    def view_list(self):
+        """
+        View list's title tags and todos
+        """
+        print(self.title)
+        if len(self.tags) != 0:
+            print("Tags :", end=" ")
+            for tag in self.tags:
+                print(tag, end=", ")
+        print()
         for item in self.inventory:
-            print(self.title)
-            if len(self.tags) != 0:
-                print("Tags :", end=" ")
-                for tag in self.tags:
-                    print(tag, end=", ")
-                print()
-            print(" ["+item.status+"] : " + item.content)
+            print(item)
+
+    def index_view(self):
+        """
+        View list's title tags and todos with indexes
+        """
+        print(self.title)
+        if len(self.tags) != 0:
+            print("Tags :", end=" ")
+            for tag in self.tags:
+                print(tag, end=", ")
+        print()
+        for i in range(len(self.inventory)):
+            print(i + " ", self.inventory[i])
+    
+    def todo_view(self, index):
+        """
+        View a specific todo of given index
+        """
+        try:
+            print(self.inventory[index])
+        except IndexError:
+            print("ERROR: The given index doesn't exist")
+
+    def tag_index_view(self):
+        """
+        View only the index and tags of the list
+        """
+        print(self.title)
+        if len(self.tags) != 0:
+            print("Tags :", end=" ")
+            for tag in self.tags:
+                print(tag, end=", ")
+        print()
+
+    def add_todo(self, content, status=" "):
+        self.inventory.append(Todo(content, status))
+    
+    def delete_todo(self, index):
+        try:
+            self.inventory.pop(index)
+        except IndexError:
+            print("ERROR: The given index doesn't exist")
+
+    def change_status(self, index, status):
+        try:
+            self.inventory[index].status = status
+        except IndexError:
+            print("ERROR: The given index doesn't exist")
