@@ -29,9 +29,7 @@ class TodoList:
         """
         print(self.title)
         if len(self.tags) != 0:
-            print("Tags :", end=" ")
-            for tag in self.tags:
-                print(tag, end=", ")
+            print("Tags :", str(self.tags).strip('[]'))
         print()
         for item in self.inventory:
             print(item)
@@ -42,9 +40,7 @@ class TodoList:
         """
         print(self.title)
         if len(self.tags) != 0:
-            print("Tags :", end=" ")
-            for tag in self.tags:
-                print(tag, end=", ")
+            print("Tags :", str(self.tags).strip('[]'))
         print()
         for i in range(len(self.inventory)):
             print(i + " ", self.inventory[i])
@@ -64,9 +60,7 @@ class TodoList:
         """
         print(self.title)
         if len(self.tags) != 0:
-            print("Tags :", end=" ")
-            for tag in self.tags:
-                print(tag, end=", ")
+            print("Tags :", str(self.tags).strip('[]'))
         print()
 
     def add_todo(self, content, status=" "):
