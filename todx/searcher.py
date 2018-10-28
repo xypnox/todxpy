@@ -1,4 +1,4 @@
-import fabric
+# from . import fabric
 from fuzzywuzzy import fuzz
 
 

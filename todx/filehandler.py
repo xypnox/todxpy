@@ -1,5 +1,5 @@
 import json
-import fabric
+from . import fabric
 import os
 import errno
 # from collections import namedtuple
