@@ -1,7 +1,8 @@
 import json
 import fabric
 import os
-from collections import namedtuple
+import errno
+# from collections import namedtuple
 
 def jdefault(o):
     return o.__dict__
@@ -26,6 +27,14 @@ def load_file(filename):
     """
     Function to load datafiles, it returns a list of TodoList objects
     """
+    if not os.path.exists(os.path.dirname(filename)):
+        try:
+            os.makedirs(os.path.dirname(filename))
+        except OSError as exc: # Guard against race condition
+            if exc.errno != errno.EEXIST:
+                raise
+        return []
+
     with open(filename) as data_file:
         read_data = data_file.read()
         return list_decoder(json.loads(read_data))
@@ -34,7 +43,7 @@ def save_file(filename, data):
     """
     Function to save data <list of TodoList Objects> to a json file in json format 
     """
-    with open(filename, "w") as data_file:
+    with open(filename, "w+") as data_file:
         jsondata = json.dumps(data, default=jdefault, indent=4)
         data_file.write(jsondata)
 

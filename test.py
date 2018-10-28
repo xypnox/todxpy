@@ -1,4 +1,5 @@
 import fabric as fb
+import appdirs
 
 T1 = fb.Todo("Idiot am I", "o")
 
@@ -12,3 +13,4 @@ stk.add_todo("Awesome stuff needs to be done")
 
 stk.view_list()
 
+print(appdirs.user_data_dir("todx"))
