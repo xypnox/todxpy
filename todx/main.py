@@ -1,10 +1,11 @@
-from yesnoquery import query_yes_no as qyn
-import fabric
+#!/usr/bin/env python3
+# import os
 import argparse
-import os
 import appdirs
+import fabric
 import filehandler
 import searcher
+# from yesnoquery import query_yes_no as qyn
 
 
 if __name__ == '__main__':
