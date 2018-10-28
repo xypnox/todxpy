@@ -8,14 +8,15 @@ class Todo:
         return "[" + self.status + "] " + self.content
 
 
-class TodoList:
+class TodoList(object):
     def __init__(self, title, tags=[]):
         """
         This function creates and initialises empty TodoList with title and tags
         """
-        self.inventory = [] # list of objects of class Todo 
+        self.__type__ = "TodoList"
         self.title = title
         self.tags = tags
+        self.inventory = [] # list of objects of class Todo 
 
     def add_tag(self, tag):
         self.tags.append(tag)
