@@ -6,16 +6,10 @@ from collections import namedtuple
 def jdefault(o):
     return o.__dict__
 
-# def object_decoder(obj):
-#     if '__type__' in obj and obj['__type__'] == 'TodoList':
-#         objT = fabric.TodoList(obj['title'], obj['tags'])
-#         for todo in obj['inventory']:
-#             objT.add_todo(todo['content'], todo['status'])
-#         return objT
-#     return obj
-# # x = json2obj(data)
-
 def list_decoder(objs):
+    """
+    Function to parse the json list of dictionary into objects of TodoList.
+    """
     todolists = []
     for obj in objs:
         # print(obj)
@@ -28,24 +22,22 @@ def list_decoder(objs):
         todolists.append(objT)
     return todolists
 
-todolist = fabric.TodoList("Science Stuff", ['science', 'tech'])
-todolist.add_todo("To make a reactor")
-todolist.add_todo("Start a reactor")
-todolist.add_todo("Workk on a reactor", "✗")
-todolist.add_todo("Research a reactor", "✓")
+def load_file(filename):
+    """
+    Function to load datafiles, it returns a list of TodoList objects
+    """
+    with open(filename) as data_file:
+        read_data = data_file.read()
+        return list_decoder(json.loads(read_data))
 
-todolists = [todolist, todolist, todolist]
+def save_file(filename, data):
+    """
+    Function to save data <list of TodoList Objects> to a json file in json format 
+    """
+    with open(filename, "w") as data_file:
+        jsondata = json.dumps(data, default=jdefault)
+        data_file.write(jsondata)
 
-jdump = json.dumps(todolists, default=jdefault)
-
-# print(jdump)
-
-with open("data.json", "w") as data_file:
-    data_file.write(jdump)
-
-with open("data.json") as data_file:
-    read_data = data_file.read()
-    # x = json.loads(read_data)
-    y = list_decoder(json.loads(read_data))
-    print(type(y[0]))
-    y[0].view_list()
+"""
+I understand that my json data encoder and decoder are absolute crap However they work and thats what is great. I have borrowed code from about 4 stackoverflow answers and used some trial and error to get to this stage. I would love to refactor it, but I would love to do a lot of other things, so this remains as it is. Do not modify this unless you are brave enough (and crazy enough).
+"""
