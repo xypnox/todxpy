@@ -14,16 +14,19 @@ if __name__ == '__main__':
     todolists = filehandler.load_file(app_data_file)
 
     parser = argparse.ArgumentParser(description='A CLI ToDo App')
-    parser.add_argument('-a', '--add', nargs='*',
+    parser.add_argument('-a', '--add',
+                        nargs='*',
                         help='add a todo')
-    parser.add_argument('--view',
-                        default='inbox',
+    parser.add_argument('-v', '--view',
+                        default=None,
+                        const='inbox',
+                        nargs='?',
                         help='view the passed list by default views inbox')
     parser.add_argument('--all',
                         action='store_true',
                         help='view all the files')
     args = parser.parse_args()
-    print(args)
+    # print(args)
 
 
     if args.add != None:
@@ -62,5 +65,18 @@ if __name__ == '__main__':
         
         else:
             print("Error: Too many Arguments (Tip: use quotes to surround todo content)")
+
+    if args.view is not None:
+        index_list = searcher.find_list_index(args.view, todolists)
+
+        if index_list >= 0:
+            todolists[index_list].view_list()
+        else:
+            print("List with title " + args.view + " could not be found!")
+    
+    if args.all is not False:
+        for tlist in todolists:
+            print()
+            tlist.view_list()
     # Final cleanup and close
     filehandler.save_file(app_data_file, todolists)
