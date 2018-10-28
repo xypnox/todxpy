@@ -1,19 +1,29 @@
 class Todo:
+    """
+    A class to represent a single todo
+    A todo has content and status, default status is blank
+    """
     def __init__(self, content="", status=" "):
+        self.__type__ = "Todo"
         self.content = content
         self.status = status
-        self._index = 0
+        # self._index = 0
     
     def __str__(self):
         return "[" + self.status + "] " + self.content
 
 
-class TodoList(object):
+class TodoList():
+    """
+    A class to represent a List of todos.
+    The main list is inventory, and the list has a title and tags
+    """
+
     def __init__(self, title, tags=[]):
         """
         This function creates and initialises empty TodoList with title and tags
         """
-        self.__type__ = "TodoList"
+        self.__type__ = "TodoList" # useful for json serialization
         self.title = title
         self.tags = tags
         self.inventory = [] # list of objects of class Todo 

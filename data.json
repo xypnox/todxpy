@@ -1,1 +1,92 @@
-[{"__type__": "TodoList", "title": "Science Stuff", "tags": ["science", "tech"], "inventory": [{"content": "To make a reactor", "status": " ", "_index": 0}, {"content": "Start a reactor", "status": " ", "_index": 0}, {"content": "Workk on a reactor", "status": "\u2717", "_index": 0}, {"content": "Research a reactor", "status": "\u2713", "_index": 0}]}, {"__type__": "TodoList", "title": "Science Stuff", "tags": ["science", "tech"], "inventory": [{"content": "To make a reactor", "status": " ", "_index": 0}, {"content": "Start a reactor", "status": " ", "_index": 0}, {"content": "Workk on a reactor", "status": "\u2717", "_index": 0}, {"content": "Research a reactor", "status": "\u2713", "_index": 0}]}, {"__type__": "TodoList", "title": "Science Stuff", "tags": ["science", "tech"], "inventory": [{"content": "To make a reactor", "status": " ", "_index": 0}, {"content": "Start a reactor", "status": " ", "_index": 0}, {"content": "Workk on a reactor", "status": "\u2717", "_index": 0}, {"content": "Research a reactor", "status": "\u2713", "_index": 0}]}]
+[
+    {
+        "__type__": "TodoList",
+        "title": "Science Stuff",
+        "tags": [
+            "science",
+            "tech"
+        ],
+        "inventory": [
+            {
+                "__type__": "Todo",
+                "content": "To make a reactor",
+                "status": " "
+            },
+            {
+                "__type__": "Todo",
+                "content": "Start a reactor",
+                "status": " "
+            },
+            {
+                "__type__": "Todo",
+                "content": "Workk on a reactor",
+                "status": "\u2717"
+            },
+            {
+                "__type__": "Todo",
+                "content": "Research a reactor",
+                "status": "\u2713"
+            }
+        ]
+    },
+    {
+        "__type__": "TodoList",
+        "title": "Science Stuff",
+        "tags": [
+            "science",
+            "tech"
+        ],
+        "inventory": [
+            {
+                "__type__": "Todo",
+                "content": "To make a reactor",
+                "status": " "
+            },
+            {
+                "__type__": "Todo",
+                "content": "Start a reactor",
+                "status": " "
+            },
+            {
+                "__type__": "Todo",
+                "content": "Workk on a reactor",
+                "status": "\u2717"
+            },
+            {
+                "__type__": "Todo",
+                "content": "Research a reactor",
+                "status": "\u2713"
+            }
+        ]
+    },
+    {
+        "__type__": "TodoList",
+        "title": "Science Stuff",
+        "tags": [
+            "science",
+            "tech"
+        ],
+        "inventory": [
+            {
+                "__type__": "Todo",
+                "content": "To make a reactor",
+                "status": " "
+            },
+            {
+                "__type__": "Todo",
+                "content": "Start a reactor",
+                "status": " "
+            },
+            {
+                "__type__": "Todo",
+                "content": "Workk on a reactor",
+                "status": "\u2717"
+            },
+            {
+                "__type__": "Todo",
+                "content": "Research a reactor",
+                "status": "\u2713"
+            }
+        ]
+    }
+]

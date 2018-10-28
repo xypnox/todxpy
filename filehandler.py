@@ -35,7 +35,7 @@ def save_file(filename, data):
     Function to save data <list of TodoList Objects> to a json file in json format 
     """
     with open(filename, "w") as data_file:
-        jsondata = json.dumps(data, default=jdefault)
+        jsondata = json.dumps(data, default=jdefault, indent=4)
         data_file.write(jsondata)
 
 """
