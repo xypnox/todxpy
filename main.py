@@ -6,14 +6,6 @@ import appdirs
 import filehandler
 import searcher
 
-def main():
-    todol = fabric.TodoList(input("Enter title : "), input("Enter tags : ").split())
-    todol.view_list()
-    todol.add_todo(input("Add todo content"))
-    todol.add_todo(input("Add todo content"))
-    todol.add_todo(input("Add todo content"))
-    todol.view_list()
-
 
 if __name__ == '__main__':
     # Load datafile and parse arguments
@@ -31,12 +23,13 @@ if __name__ == '__main__':
                         action='store_true',
                         help='view all the files')
     args = parser.parse_args()
-    # print(args)
+    print(args)
 
 
     if args.add != None:
-        
-        if len(args.add) == 1:
+        if len(args.add) == 0:
+            print("Please provide at least one argument: content list-title[optional]  status[optional]")
+        elif len(args.add) == 1:
             if len(todolists) == 0:
                 todolists.append(fabric.TodoList("inbox"))
                 todolists[0].add_todo(args.add[0])
@@ -45,10 +38,29 @@ if __name__ == '__main__':
             todolists[0].view_list()
         # print("Added todo + ", args.add[0])
         
-        # elif len(args.add) == 2:
-        #     if 
-
-
+        elif len(args.add) == 2:
+            index_list = searcher.find_list_index(args.add[1], todolists)
+            if index_list >= 0:
+                todolists[index_list].add_todo(args.add[0])
+                todolists[index_list].view_list()
+            else:
+                newlist = fabric.TodoList(args.add[1])
+                newlist.add_todo(args.add[0])
+                todolists.append(newlist)
+                newlist.view_list()
+        
+        elif len(args.add) == 3:
+            index_list = searcher.find_list_index(args.add[1], todolists)
+            if index_list >= 0:
+                todolists[index_list].add_todo(args.add[0], args.add[2])
+                todolists[index_list].view_list()
+            else:
+                newlist = fabric.TodoList(args.add[1])
+                newlist.add_todo(args.add[0], args.add[2])
+                todolists.append(newlist)
+                newlist.view_list()
+        
+        else:
+            print("Error: Too many Arguments (Tip: use quotes to surround todo content)")
     # Final cleanup and close
     filehandler.save_file(app_data_file, todolists)
-    # main()
