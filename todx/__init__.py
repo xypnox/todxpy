@@ -1,14 +1,13 @@
-name='todx'
+#!/usr/bin/env python3
 name = 'todx'
 
-#!/usr/bin/env python3
 # import os
 import argparse
 import appdirs
-from . import settings
-from . import fabric
-from . import filehandler
-from . import searcher
+import settings
+import fabric
+import filehandler
+import searcher
 # from yesnoquery import query_yes_no as qyn
 
 def main_command():

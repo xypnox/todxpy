@@ -1,4 +1,4 @@
-from . import settings
+import settings
 
 class Todo:
     """
