@@ -1,5 +1,5 @@
-import fabric
 from fuzzywuzzy import fuzz
+# from todx import fabric
 
 
 def find_list_index(list_title, todolists):

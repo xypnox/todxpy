@@ -2,13 +2,13 @@
 # import os
 import argparse
 import appdirs
-import fabric
-import filehandler
-import searcher
+
+from todx import fabric
+from todx import filehandler
+from todx import searcher
 # from yesnoquery import query_yes_no as qyn
 
-
-if __name__ == '__main__':
+def main_command():
     # Load datafile and parse arguments
     app_data_file = appdirs.user_data_dir('todx') + '/data.json'
 

@@ -1,7 +1,7 @@
 import json
-import fabric
 import os
 import errno
+from todx import fabric
 # from collections import namedtuple
 
 def jdefault(o):

@@ -1,4 +1,4 @@
-from settings import status_aliases
+from todx.settings import status_aliases
 
 class Todo:
     """
