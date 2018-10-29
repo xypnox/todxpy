@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*- 
 status_aliases_dict = {
     'v': '✓',
     'x': '✗'

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*- 
 import sys
 
 def query_yes_no(question, default="yes"):

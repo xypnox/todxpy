@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*- 
 from todx.settings import status_aliases
 
 class Todo:

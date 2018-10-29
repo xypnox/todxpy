@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*- 
 import setuptools
 
 with open("README.md", "r") as fh:
@@ -13,6 +14,9 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/xypnox/todxpy",
     packages=setuptools.find_packages(),
+    entry_points = {
+        'console_scripts': ['todx=todx.main:main_command'],
+    },
     install_requires = ['appdirs', 'fuzzywuzzy'],
     classifiers=[
         "Programming Language :: Python :: 3",
