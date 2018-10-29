@@ -6,4 +6,5 @@ status_aliases_dict = {
 def status_aliases(status):
     if status in status_aliases_dict:
         return status_aliases_dict[status]
-    return status
+    else:
+        return status

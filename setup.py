@@ -14,11 +14,6 @@ setuptools.setup(
     url="https://github.com/xypnox/todxpy",
     packages=setuptools.find_packages(),
     install_requires = ['appdirs', 'fuzzywuzzy'],
-    entry_points = {
-        # 'console_scripts': ['todx=command-line:main'],
-
-        'console_scripts': ['todx=todx:main_command'],
-    },
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",

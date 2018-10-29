@@ -1,4 +1,4 @@
-import settings
+from settings import status_aliases
 
 class Todo:
     """
@@ -12,7 +12,7 @@ class Todo:
         # self._index = 0
     
     def __str__(self):
-        return '[' + settings.status_aliases(self.status) + '] ' + self.content
+        return '[' + status_aliases(self.status) + '] ' + self.content
 
 
 class TodoList():
