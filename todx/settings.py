@@ -4,6 +4,8 @@ status_aliases_dict = {
     'x': '✗'
 }
 
+done_markers = ['v', '✓', 'x', '✗', 'o']
+
 version = '0.0.7'
 
 def status_aliases(status):

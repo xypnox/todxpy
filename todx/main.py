@@ -26,6 +26,11 @@ def main_command():
         help='add a todo'
     )
     parser.add_argument(
+        '-m', '--mark',
+        nargs='*',
+        help='Mark a todo'
+    )
+    parser.add_argument(
         '-v', '--view',
         default=None,
         const='inbox',
@@ -82,6 +87,16 @@ def main_command():
         
         else:
             print("Error: Too many Arguments (Tip: use quotes to surround todo content)")
+
+    if args.mark is not None:
+        if len(args.mark) == 0:
+            if len(todolists) >= 0:
+                todolists[0].index_view()
+                index = int(input("Which list you want to mark: "))
+                if index < len(todolists[0].inventory):
+                    todolists[0].inventory[index].status = input("What is your new status: ")
+            else:
+                print("No default list found")
 
     if args.view is not None:
         index_list = searcher.find_list_index(args.view, todolists)

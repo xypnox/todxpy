@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*- 
-from todx.settings import status_aliases
+from todx import settings as stg
 
 class Todo:
     """
@@ -13,7 +13,7 @@ class Todo:
         # self._index = 0
     
     def __str__(self):
-        return '[' + status_aliases(self.status) + '] ' + self.content
+        return '[' + stg.status_aliases(self.status) + '] ' + self.content
 
 
 class TodoList():
@@ -48,17 +48,22 @@ class TodoList():
         for item in self.inventory:
             print(item)
 
-    def index_view(self):
+    def index_view(self, only_done=False):
         """
-        View list's title tags and todos with indexes
+        View list's todos with indexes
         """
         print(self.title)
         if len(self.tags) != 0:
             print("Tags :", str(self.tags).strip('[]'))
         print()
-        for i in range(len(self.inventory)):
-            print(i + " ", self.inventory[i])
-    
+        if only_done == True:
+            for i, todo in enumerate(self.inventory):
+                if todo.status in stg.done_markers:
+                    print(i + " ", todo)
+        else:
+            for i, todo in enumerate(self.inventory):
+                print(i, " ", todo)
+
     def todo_view(self, index):
         """
         View a specific todo of given index
@@ -68,9 +73,9 @@ class TodoList():
         except IndexError:
             print("ERROR: The given index doesn't exist")
 
-    def tag_index_view(self):
+    def tag_view(self):
         """
-        View only the index and tags of the list
+        View only the title and tags of the list
         """
         print(self.title)
         if len(self.tags) != 0:
