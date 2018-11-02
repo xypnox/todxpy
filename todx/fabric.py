@@ -37,7 +37,7 @@ class TodoList():
     def change_title(self, title):
         self.title = title
 
-    def view_list(self):
+    def view_list(self, only_done=False):
         """
         View list's title tags and todos
         """
@@ -45,8 +45,13 @@ class TodoList():
         if len(self.tags) != 0:
             print("Tags :", str(self.tags).strip('[]'))
         print()
-        for item in self.inventory:
-            print(item)
+        if only_done == False:
+            for todo in self.inventory:
+                print(todo)
+        else:
+            for todo in self.inventory:
+                if todo.status not in stg.done_markers:
+                    print(todo)
 
     def index_view(self, only_done=False):
         """

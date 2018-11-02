@@ -35,7 +35,14 @@ def main_command():
         default=None,
         const='inbox',
         nargs='?',
-        help='view the passed list by default views inbox'
+        help='view the passed list, by default views inbox'
+    )
+    parser.add_argument(
+        '-t', '--task',
+        default=None,
+        const='inbox',
+        nargs='?',
+        help='view the passed list left todos, by default views inbox'
     )
     parser.add_argument(
         '--all',
@@ -105,6 +112,14 @@ def main_command():
             todolists[index_list].view_list()
         else:
             print("List with title " + args.view + " could not be found!")
+
+    if args.task is not None:
+        index_list = searcher.find_list_index(args.task, todolists)
+
+        if index_list >= 0:
+            todolists[index_list].view_list(only_done=True)
+        else:
+            print("List with title " + args.task + " could not be found!")
     
     if args.all is not False:
         for tlist in todolists:
