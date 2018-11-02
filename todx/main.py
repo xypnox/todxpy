@@ -4,6 +4,7 @@
 import argparse
 import appdirs
 
+from todx import settings
 from todx import fabric
 from todx import filehandler
 from todx import searcher
@@ -15,18 +16,32 @@ def main_command():
 
     todolists = filehandler.load_file(app_data_file)
 
-    parser = argparse.ArgumentParser(description='A CLI ToDo App')
-    parser.add_argument('-a', '--add',
-                        nargs='*',
-                        help='add a todo')
-    parser.add_argument('-v', '--view',
-                        default=None,
-                        const='inbox',
-                        nargs='?',
-                        help='view the passed list by default views inbox')
-    parser.add_argument('--all',
-                        action='store_true',
-                        help='view all the files')
+    parser = argparse.ArgumentParser(
+        prog='TodX',
+        description='A CLI ToDo App'
+    )
+    parser.add_argument(
+        '-a', '--add',
+        nargs='*',
+        help='add a todo'
+    )
+    parser.add_argument(
+        '-v', '--view',
+        default=None,
+        const='inbox',
+        nargs='?',
+        help='view the passed list by default views inbox'
+    )
+    parser.add_argument(
+        '--all',
+        action='store_true',
+        help='view all the files'
+    )
+    parser.add_argument(
+        '--version',
+        action='version',
+        version='%(prog)s ' + settings.version
+    )
     args = parser.parse_args()
     # print(args)
 

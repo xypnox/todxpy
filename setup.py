@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="todx",
-    version="0.0.4",
+    version="0.0.7",
     author="xypnox",
     author_email="xypnox@gmail.com",
     description="A simple todo application",
@@ -17,7 +17,7 @@ setuptools.setup(
     entry_points = {
         'console_scripts': ['todx=todx.main:main_command'],
     },
-    install_requires = ['appdirs', 'fuzzywuzzy'],
+    install_requires = ['appdirs', 'fuzzywuzzy[speedup]'],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
