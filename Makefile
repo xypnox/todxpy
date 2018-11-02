@@ -4,3 +4,6 @@ build: todx/*
 
 install:
 	pip3 install --force-reinstall dist/*.whl
+
+publish:
+	twine upload dist/*

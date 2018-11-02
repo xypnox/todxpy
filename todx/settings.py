@@ -6,7 +6,7 @@ status_aliases_dict = {
 
 done_markers = ['v', '✓', 'x', '✗', 'o']
 
-version = '0.0.7'
+version = '0.0.8'
 
 def status_aliases(status):
     if status in status_aliases_dict:
