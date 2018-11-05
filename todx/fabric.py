@@ -1,15 +1,16 @@
 # -*- coding: utf-8 -*- 
-from todx import settings as stg
+from . import settings as stg
 
 class Todo:
     """
     A class to represent a single todo
     A todo has content and status, default status is blank
     """
-    def __init__(self, content='', status='☐'):
+    def __init__(self, content='', tags=[], status='☐'):
         self.__type__ = "Todo"
         self.content = content
         self.status = status
+        self.tags = tags
         # self._index = 0
     
     def __str__(self):
