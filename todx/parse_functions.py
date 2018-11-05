@@ -1,5 +1,6 @@
 from . import fabric
 from . import searcher
+from . import settings as stg
 
 def parse_modifier(newtodo, arg):
     """
@@ -62,14 +63,15 @@ def parse_view(tlist, args):
      - if an argument is passed view todos tagged as the argument
     """
     if len(args) == 1:
-        for todo in tlist:
-            print(todo)
+        fabric.view_list(tlist)
         return
 
     index_list = searcher.find_index_tag(args[1], tlist)
+    
     if len(index_list) == 0:
         print("No todos with tag " + args[1] + " found!")
         return
+    
     print('+', index_list[0])
     for index in index_list[1:]:
         print(tlist[index].without_tags())
@@ -78,5 +80,20 @@ def parse_view(tlist, args):
 def parse_task(tlist, args):
     """
     Parse task command
+     - If no other arguments are passed view every undone todo
+     - if an argument is passed view undone todos tagged as the argument
     """
-    fabric.view_list(tlist, only_left=True)
+    if len(args) == 1:
+        fabric.view_list(tlist, only_left=True)
+        return
+
+    index_list = searcher.find_index_tag(args[1], tlist)
+    
+    if len(index_list) == 0:
+        print("No todos with tag " + args[1] + " found!")
+        return
+    
+    print('+', index_list[0])
+    for index in index_list[1:]:
+        if tlist[index].status not in stg.done_markers:
+            print(tlist[index].without_tags())
