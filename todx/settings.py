@@ -8,6 +8,8 @@ done_markers = ['v', '☑', 'x', '✗', 'o']
 
 version = '0.0.8'
 
+modifiers = ['+', '#']
+
 def status_aliases(status):
     if status in status_aliases_dict:
         return status_aliases_dict[status]

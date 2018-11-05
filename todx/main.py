@@ -20,22 +20,18 @@ def main_command():
 
     if len(args) == 0:
         args.append('task')
-        pf.view_task(tlist, args)
+        pf.parse_task(tlist, args)
     
     elif args[0] == 'add':
-        tlist = pf.add_todo(tlist, args)
+        tlist = pf.parse_add(tlist, args)
 
     elif args[0] == 'mark':
-        tlist = pf.mark_todo(tlist, args)
+        tlist = pf.parse_mark(tlist, args)
 
     elif args[0] == 'view':
-        pf.view_todo(tlist, args)
+        pf.parse_view(tlist, args)
 
     elif args[0] == 'task':
-        pf.view_task(tlist, args)
-    
-    elif args[0] == 'all':
-        pf.view_all(tlist, args)
-    
+        pf.parse_task(tlist, args)
     # Final cleanup and close
     filehandler.save_file(app_data_file, tlist)
