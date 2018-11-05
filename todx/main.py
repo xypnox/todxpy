@@ -24,10 +24,10 @@ def main_command():
         pf.parse_task(tlist, args)
     
     elif args[0] == 'add':
-        tlist = pf.parse_add(tlist, args)
+        pf.parse_add(tlist, args)
 
     elif args[0] == 'mark':
-        tlist = pf.parse_mark(tlist, args)
+        pf.parse_mark(tlist, args)
 
     elif args[0] == 'view':
         pf.parse_view(tlist, args)

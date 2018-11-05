@@ -6,25 +6,24 @@ def parse_modifier(newtodo, arg):
         newtodo.add_tag(arg[1:])
     # elif arg[1] == '':
 
+
 def parse_add(tlist, args):
     if len(args) == 1:
         print("Please provide at least one argument: content list-title[optional]  status[optional]")
-        return tlist
     
     elif len(args) == 2:
         fabric.add_todo(tlist, args[1])
-        return tlist
     
     else:
         newtodo = fabric.Todo()
-        for arg in args:
+        for arg in args[1:]:
             if fabric.check_modifier(arg) is False:
-                newtodo.content += arg
+                newtodo.content += arg + ' '
             else:
                 parse_modifier(newtodo, arg)
         tlist.append(newtodo)
-        return tlist
     print("Added todo + ", args[1])
+
 
 def parse_mark(tlist, args):
     if len(args) == 1:
@@ -33,9 +32,9 @@ def parse_mark(tlist, args):
             index = int(input("Which list you want to mark: "))
         if index < len(tlist):
             tlist[0].status = input("What is your new status: ")
-            return tlist
         else:
             print("No default list found")
+
 
 def parse_view(tlist, args):
     if len(args) == 1:
@@ -46,6 +45,7 @@ def parse_view(tlist, args):
         tlist[index_list].view_list()
     else:
         print("List with title " + args[1] + " could not be found!")
+
 
 def parse_task(tlist, args):
     fabric.view_list(tlist, only_left=True)
