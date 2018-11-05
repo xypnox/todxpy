@@ -47,8 +47,9 @@ def parse_view(tlist, args):
     if len(index_list) == 0:
         print("No todos with tag " + args[1] + " found!")
         return
-    for index in index_list:
-        print(tlist[index])
+    print('+', index_list[0])
+    for index in index_list[1:]:
+        print(tlist[index].without_tags())
 
 
 def parse_task(tlist, args):

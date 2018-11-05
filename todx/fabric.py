@@ -22,6 +22,9 @@ class Todo:
             output += ' +' + tag
         return output
 
+    def without_tags(self):
+        return stg.status_aliases(self.status) + '  ' + self.content
+
     def change_status(self, status):
         self.status = status
 

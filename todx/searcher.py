@@ -4,11 +4,16 @@ from fuzzywuzzy import process
 
 
 def find_index_tag(tag, tlist):
-    indices = []
+    """
+    Returns a list with first element as tag and rest indexes of todos with that tag
+    """
+    index_list = []
+    similar_tags = []
     for i, todo in enumerate(tlist):
         similar_tags = process.extract(tag, todo.tags)
-        print(similar_tags)
         if len(similar_tags) > 0:
+            if len(index_list) == 0:
+                index_list.append(similar_tags[0][0])
             if similar_tags[0][1] > 70:
-                indices.append(i)
-    return indices
+                index_list.append(i)
+    return index_list
