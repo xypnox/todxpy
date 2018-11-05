@@ -17,19 +17,22 @@ class Todo:
         self.tags.append(tag)
 
     def __str__(self):
-        return stg.status_aliases(self.status) + '  ' + self.content
+        output = stg.status_aliases(self.status) + '  ' + self.content
+        for tag in self.tags:
+            output += ' +' + tag
+        return output
 
     def change_status(self, status):
         self.status = status
 
 
 
-def view_list(tlist, only_done=False):
+def view_list(tlist, only_left=False):
     """
     View todos
     """
     print()
-    if only_done == False:
+    if only_left == False:
         for todo in tlist:
             print(todo)
     else:
@@ -37,13 +40,13 @@ def view_list(tlist, only_done=False):
             if todo.status not in stg.done_markers:
                 print(todo)
 
-def index_view(tlist, only_done=False):
+def index_view(tlist, only_left=False):
     """
     View list's todos with indexes
     """
-    if only_done == True:
+    if only_left == True:
         for i, todo in enumerate(tlist):
-            if todo.status in stg.done_markers:
+            if todo.status not in stg.done_markers:
                 print(i + " ", todo)
     else:
         for i, todo in enumerate(tlist):

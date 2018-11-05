@@ -24,15 +24,16 @@ def list_decoder(objs):
 
 def load_file(filename):
     """
-    Function to load datafiles, it returns a list of TodoList objects
+    Function to load datafiles, it returns a list of Todo
     """
-    if not os.path.exists(os.path.dirname(filename)) and len(filename.split('/')) > 1:
-        try:
-            os.makedirs(os.path.dirname(filename))
-        except OSError as exc: # Guard against race condition
-            if exc.errno != errno.EEXIST:
-                raise
-        return []
+    if len(filename.split('/')) > 1:
+        if not os.path.exists(os.path.dirname(filename)):
+            try:
+                os.makedirs(os.path.dirname(filename))
+            except OSError as exc: # Guard against race condition
+                if exc.errno != errno.EEXIST:
+                    raise
+            return []
 
     with open(filename) as data_file:
         read_data = data_file.read()

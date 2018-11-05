@@ -2,7 +2,7 @@ from . import fabric
 from . import searcher
 
 def parse_modifier(newtodo, arg):
-    if arg[0] == '#':
+    if arg[0] == '+':
         newtodo.add_tag(arg[1:])
     # elif arg[1] == '':
 
@@ -13,7 +13,6 @@ def parse_add(tlist, args):
     
     elif len(args) == 2:
         fabric.add_todo(tlist, args[1])
-        tlist[0].view_list()
         return tlist
     
     else:
@@ -49,11 +48,4 @@ def parse_view(tlist, args):
         print("List with title " + args[1] + " could not be found!")
 
 def parse_task(tlist, args):
-    if len(args) == 1:
-        args.append('index')
-    index_list = searcher.find_list_index(args[1], tlist)
-
-    if index_list >= 0:
-        tlist[index_list].view_list(only_done=True)
-    else:
-        print("List with title " + args[1] + " could not be found!")
+    fabric.view_list(tlist, only_left=True)

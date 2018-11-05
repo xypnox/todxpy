@@ -14,6 +14,7 @@ def main_command():
     app_data_file = appdirs.user_data_dir('todx') + '/data.json'
 
     tlist = filehandler.load_file(app_data_file)
+    # print(tlist)
 
     args = sys.argv[1:]
     print('Arguments passed are : ', args)
