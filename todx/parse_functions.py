@@ -13,6 +13,7 @@ def parse_add(tlist, args):
     
     elif len(args) == 2:
         fabric.add_todo(tlist, args[1])
+        print("Added todo + ", args[1])
     
     else:
         newtodo = fabric.Todo()
@@ -22,7 +23,7 @@ def parse_add(tlist, args):
             else:
                 parse_modifier(newtodo, arg)
         tlist.append(newtodo)
-    print("Added todo + ", args[1])
+        print('Added todo: ', newtodo)
 
 
 def parse_mark(tlist, args):
@@ -38,13 +39,16 @@ def parse_mark(tlist, args):
 
 def parse_view(tlist, args):
     if len(args) == 1:
-        args.append('index')
-    index_list = searcher.find_list_index(args[1], tlist)
+        for todo in tlist:
+            print(todo)
+        return
 
-    if index_list >= 0:
-        tlist[index_list].view_list()
-    else:
-        print("List with title " + args[1] + " could not be found!")
+    index_list = searcher.find_index_tag(args[1], tlist)
+    if len(index_list) == 0:
+        print("No todos with tag " + args[1] + " found!")
+        return
+    for index in index_list:
+        print(tlist[index])
 
 
 def parse_task(tlist, args):
