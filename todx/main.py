@@ -17,7 +17,7 @@ def main_command():
     # print(tlist)
 
     args = sys.argv[1:]
-    print('Arguments passed are : ', args)
+    # print('Arguments passed are : ', args)
 
     if len(args) == 0:
         args.append('task')
@@ -34,5 +34,8 @@ def main_command():
 
     elif args[0] == 'task':
         pf.parse_task(tlist, args)
+    
+    elif args[0] == 'del':
+        pf.parse_del(tlist, args)
     # Final cleanup and close
     filehandler.save_file(app_data_file, tlist)

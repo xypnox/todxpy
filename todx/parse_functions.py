@@ -1,6 +1,7 @@
 from . import fabric
 from . import searcher
 from . import settings as stg
+from .yesnoquery import query_yes_no
 
 def parse_modifier(newtodo, arg):
     """
@@ -44,7 +45,7 @@ def parse_mark(tlist, args):
     Parse mark command
     """
     if len(args) == 1:
-        if len(tlist) >= 0:
+        if len(tlist) > 0:
             fabric.index_view(tlist)
             print()
             index = int(input("Which todo you want to mark: "))
@@ -97,3 +98,21 @@ def parse_task(tlist, args):
     for index in index_list[1:]:
         if tlist[index].status not in stg.done_markers:
             print(tlist[index].without_tags())
+
+
+def parse_del(tlist, args):
+    """
+    Parse del command
+    """
+    if len(args) == 1:
+        if len(tlist) > 0:
+            fabric.index_view(tlist)
+            print()
+            index = int(input("Which todo you want to delete: "))
+            if index < len(tlist):
+                if query_yes_no('Are you sure buddy?') is True:
+                    del tlist[index]
+            else:
+                print('Too large an Index, You have.')
+        else:
+            print("No todo list found")
