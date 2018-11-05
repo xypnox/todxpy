@@ -12,23 +12,21 @@ def list_decoder(objs):
     """
     Function to parse the json list of dictionary into objects of TodoList.
     """
-    todolists = []
+    tlist = []
     for obj in objs:
         # print(obj)
-        if '__type__' in obj and obj['__type__'] == 'TodoList':
-            objT = fabric.TodoList(obj['title'], obj['tags'])
-            for todo in obj['inventory']:
-                objT.add_todo(todo['content'], todo['status'])
+        if '__type__' in obj and obj['__type__'] == 'Todo':
+            objT = fabric.Todo(obj['content'], obj['tags'], obj['status'])
         else:
             objT = obj
-        todolists.append(objT)
-    return todolists
+        tlist.append(objT)
+    return tlist
 
 def load_file(filename):
     """
     Function to load datafiles, it returns a list of TodoList objects
     """
-    if not os.path.exists(os.path.dirname(filename)):
+    if not os.path.exists(os.path.dirname(filename)) and len(filename.split('/')) > 1:
         try:
             os.makedirs(os.path.dirname(filename))
         except OSError as exc: # Guard against race condition

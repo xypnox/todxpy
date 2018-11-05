@@ -66,8 +66,8 @@ def todo_view(tlist, index):
 #         print("Tags :", str(self.tags).strip('[]'))
 #     print()
 
-def add_todo(tlist, content, status="☐"):
-    tlist.append(Todo(content, status))
+def add_todo(tlist, content, status="☐", tags=[]):
+    tlist.append(Todo(content, status=status, tags=tags))
 
 def delete_todo(tlist, index):
     try:
