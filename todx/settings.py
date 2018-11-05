@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*- 
 status_aliases_dict = {
     'v': '☑',
-    'x': '✗'
+    'x': '✗',
+    ' ': '☐'
 }
 
 done_markers = ['v', '☑', 'x', '✗', 'o']

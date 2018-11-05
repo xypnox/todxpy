@@ -6,7 +6,7 @@ class Todo:
     A class to represent a single todo
     A todo has content and status, default status is blank
     """
-    def __init__(self, content='', tags=[], status='☐'):
+    def __init__(self, content='', tags=[], status=' '):
         self.__type__ = "Todo"
         self.content = content
         self.status = status
@@ -50,10 +50,10 @@ def index_view(tlist, only_left=False):
     if only_left == True:
         for i, todo in enumerate(tlist):
             if todo.status not in stg.done_markers:
-                print(i + " ", todo)
+                print(i, todo)
     else:
         for i, todo in enumerate(tlist):
-            print(i, " ", todo)
+            print(i, todo)
 
 def todo_view(tlist, index):
     """
@@ -72,7 +72,7 @@ def todo_view(tlist, index):
 #         print("Tags :", str(self.tags).strip('[]'))
 #     print()
 
-def add_todo(tlist, content, status="☐", tags=[]):
+def add_todo(tlist, content, status=" ", tags=[]):
     tlist.append(Todo(content, status=status, tags=tags))
 
 def delete_todo(tlist, index):

@@ -2,14 +2,26 @@ from . import fabric
 from . import searcher
 
 def parse_modifier(newtodo, arg):
+    """
+    Parse a sepecial modifier argument
+    Current mod:
+        +   add
+    """
     if arg[0] == '+':
         newtodo.add_tag(arg[1:])
     # elif arg[1] == '':
 
 
 def parse_add(tlist, args):
+    """
+    Parse the add command
+     - If no arguments prints help for add
+     - If 1 argument creates new todo with argument as content
+     - If more arguments joins arguments into content and seperates modifiers
+    """
+
     if len(args) == 1:
-        print("Please provide at least one argument: content list-title[optional]  status[optional]")
+        print("Please provide at least one argument: content tags[optional]  status[optional]")
     
     elif len(args) == 2:
         fabric.add_todo(tlist, args[1])
@@ -27,17 +39,28 @@ def parse_add(tlist, args):
 
 
 def parse_mark(tlist, args):
+    """
+    Parse mark command
+    """
     if len(args) == 1:
         if len(tlist) >= 0:
-            tlist[0].index_view()
-            index = int(input("Which list you want to mark: "))
-        if index < len(tlist):
-            tlist[0].status = input("What is your new status: ")
+            fabric.index_view(tlist)
+            print()
+            index = int(input("Which todo you want to mark: "))
+            if index < len(tlist):
+                tlist[index].status = input("What is your new status: ")
+            else:
+                print('Too large an Index, You have.')
         else:
-            print("No default list found")
+            print("No todo list found")
 
 
 def parse_view(tlist, args):
+    """
+    Parse view command
+     - If no other arguments are passed view every todo
+     - if an argument is passed view todos tagged as the argument
+    """
     if len(args) == 1:
         for todo in tlist:
             print(todo)
@@ -53,4 +76,7 @@ def parse_view(tlist, args):
 
 
 def parse_task(tlist, args):
+    """
+    Parse task command
+    """
     fabric.view_list(tlist, only_left=True)
