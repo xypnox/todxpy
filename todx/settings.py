@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*- 
 status_aliases_dict = {
-    'v': '✓',
+    'v': '☑',
     'x': '✗'
 }
 
-done_markers = ['v', '✓', 'x', '✗', 'o']
+done_markers = ['v', '☑', 'x', '✗', 'o']
 
 version = '0.0.8'
 

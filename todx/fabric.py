@@ -6,14 +6,14 @@ class Todo:
     A class to represent a single todo
     A todo has content and status, default status is blank
     """
-    def __init__(self, content='', status=' '):
+    def __init__(self, content='', status='☐'):
         self.__type__ = "Todo"
         self.content = content
         self.status = status
         # self._index = 0
     
     def __str__(self):
-        return '[' + stg.status_aliases(self.status) + '] ' + self.content
+        return stg.status_aliases(self.status) + '  ' + self.content
 
 
 class TodoList():
@@ -87,7 +87,7 @@ class TodoList():
             print("Tags :", str(self.tags).strip('[]'))
         print()
 
-    def add_todo(self, content, status=" "):
+    def add_todo(self, content, status="☐"):
         self.inventory.append(Todo(content, status))
     
     def delete_todo(self, index):
