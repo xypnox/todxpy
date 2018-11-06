@@ -7,6 +7,7 @@ import sys
 
 from . import filehandler
 from . import parse_functions as pf
+from . import settings as stg
 # from yesnoquery import query_yes_no as qyn
 
 def main_command():
@@ -37,5 +38,9 @@ def main_command():
     
     elif args[0] == 'del':
         pf.parse_del(tlist, args)
+
+    elif args[0] == '--version' or args[0] == '-v':
+        print('TodX v' + stg.version)
+
     # Final cleanup and close
     filehandler.save_file(app_data_file, tlist)

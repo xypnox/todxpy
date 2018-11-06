@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="todx",
-    version="0.0.8",
+    version="0.1.0",
     author="xypnox",
     author_email="xypnox@gmail.com",
     description="A simple todo application",
