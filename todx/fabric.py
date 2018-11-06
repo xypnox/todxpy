@@ -34,7 +34,7 @@ def view_list(tlist, only_left=False):
     """
     View todos
     """
-    print()
+    # print()
     if only_left == False:
         for todo in tlist:
             print(todo)

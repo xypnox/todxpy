@@ -68,7 +68,7 @@ def parse_view(tlist, args):
         return
 
     index_list = searcher.find_index_tag(args[1], tlist)
-    
+
     if len(index_list) == 0:
         print("No todos with tag " + args[1] + " found!")
         return
