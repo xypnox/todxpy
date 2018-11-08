@@ -88,13 +88,16 @@ def parse_task(tlist, args):
         fabric.view_list(tlist, only_left=True)
         return
 
+    if args[1][0] == '+':
+        args[1] = args[1][1:]
+
     index_list = searcher.find_index_tag(args[1], tlist)
     
     if len(index_list) == 0:
         print("No todos with tag " + args[1] + " found!")
         return
     
-    print('+', index_list[0])
+    print('+', args[1])
     for index in index_list[1:]:
         if tlist[index].status not in stg.done_markers:
             print(tlist[index].without_tags())
