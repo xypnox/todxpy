@@ -7,7 +7,7 @@ status_aliases_dict = {
 
 done_markers = ['v', '☑', 'x', '☒', 'o']
 
-version = '0.1.1'
+version = '0.1.2'
 
 modifiers = ['+', '#']
 

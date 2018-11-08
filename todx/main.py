@@ -22,10 +22,10 @@ def main_command():
         args.append('task')
         pf.parse_task(tlist, args)
     
-    elif args[0] == 'add':
+    elif args[0] == 'add' or args[0] == '-a':
         pf.parse_add(tlist, args)
 
-    elif args[0] == 'mark':
+    elif args[0] == 'mark' or args[0] == '-m':
         pf.parse_mark(tlist, args)
 
     elif args[0] == 'view':
@@ -43,6 +43,9 @@ def main_command():
     elif args[0][0] == '+':
         args.insert(0, 'task')
         pf.parse_task(tlist, args)
+
+    else:
+        print("Unknown commands: ", args)
 
     # Final cleanup and close
     filehandler.save_file(app_data_file, tlist)
