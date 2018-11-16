@@ -17,9 +17,9 @@ class Todo:
         self.tags.append(tag)
 
     def __str__(self):
-        output = stg.status_aliases(self.status) + '  ' + self.content
+        output = '\033[31m' + stg.status_aliases(self.status) + '\033[0m  ' + self.content
         for tag in self.tags:
-            output += ' +' + tag
+            output += ' \033[94m' + stg.tag_marker + '\033[104;30m+' + tag + ' \033[0m '
         return output
 
     def without_tags(self):

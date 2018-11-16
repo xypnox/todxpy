@@ -7,6 +7,8 @@ status_aliases_dict = {
 
 done_markers = ['v', '☑', 'x', '☒', 'o']
 
+tag_marker = ''
+
 version = '0.1.2'
 
 modifiers = ['+', '#']
