@@ -19,11 +19,11 @@ class Todo:
     def __str__(self):
         output = '\033[31m' + stg.status_aliases(self.status) + '\033[0m  ' + self.content
         for tag in self.tags:
-            output += ' \033[94m' + stg.tag_marker + '\033[104;30m+' + tag + ' \033[0m '
+            output += stg.tag_decorator(tag)
         return output
 
     def without_tags(self):
-        return stg.status_aliases(self.status) + '  ' + self.content
+        return '\033[31m' + stg.status_aliases(self.status) + '\033[0m  ' + self.content
 
     def change_status(self, status):
         self.status = status
