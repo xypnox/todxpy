@@ -17,13 +17,13 @@ class Todo:
         self.tags.append(tag)
 
     def __str__(self):
-        output = stg.status_aliases(self.status) + '  ' + self.content
+        output = '\033[31m' + stg.status_aliases(self.status) + '\033[0m  ' + self.content
         for tag in self.tags:
-            output += ' +' + tag
+            output += stg.tag_decorator(tag)
         return output
 
     def without_tags(self):
-        return stg.status_aliases(self.status) + '  ' + self.content
+        return '\033[31m' + stg.status_aliases(self.status) + '\033[0m  ' + self.content
 
     def change_status(self, status):
         self.status = status

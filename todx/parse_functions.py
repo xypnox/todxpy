@@ -73,10 +73,10 @@ def parse_view(tlist, args):
     index_list = searcher.find_index_tag(args[1], tlist)
 
     if len(index_list) == 0:
-        print("No todos with tag " + args[1] + " found!")
+        print("No todos with tag " + stg.tag_decorator(args[1]) + " found!")
         return
     
-    print('+', args[1])
+    print(stg.tag_decorator(args[1]))
     for index in index_list[1:]:
         print(tlist[index].without_tags())
 
@@ -97,10 +97,10 @@ def parse_task(tlist, args):
     index_list = searcher.find_index_tag(args[1], tlist)
     
     if len(index_list) == 0:
-        print("No todos with tag " + args[1] + " found!")
+        print("No todos with tag " + stg.tag_decorator(args[1]) + " found!")
         return
     
-    print('+', args[1])
+    print(stg.tag_decorator(args[1]))
     for index in index_list[1:]:
         if tlist[index].status not in stg.done_markers:
             print(tlist[index].without_tags())
