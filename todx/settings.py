@@ -9,7 +9,7 @@ done_markers = ['v', '☑', 'x', '☒', 'o']
 
 tag_marker = ''
 
-version = '0.1.2'
+version = '0.1.3'
 
 modifiers = ['+', '#']
 
