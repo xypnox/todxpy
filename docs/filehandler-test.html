@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <title>filehandler-test.py</title>
+  <link rel="stylesheet" href="pycco.css">
+</head>
+<body>
+<div id='container'>
+  <div id="background"></div>
+  <div class='section'>
+    <div class='docs'><h1>filehandler-test.py</h1></div>
+  </div>
+  <div class='clearall'>
+  <div class='section' id='section-0'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-0'>#</a>
+      </div>
+      <p>import json</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">todx</span> <span class="kn">import</span> <span class="n">fabric</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-1'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-1'>#</a>
+      </div>
+      <p>import os
+from collections import namedtuple</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="kn">from</span> <span class="nn">todx</span> <span class="kn">import</span> <span class="n">filehandler</span>
+
+
+
+<span class="n">todolist</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">fabric</span><span class="o">.</span><span class="n">add_todo</span><span class="p">(</span><span class="n">todolist</span><span class="p">,</span> <span class="s2">&quot;To make a reactor&quot;</span><span class="p">)</span>
+<span class="n">fabric</span><span class="o">.</span><span class="n">add_todo</span><span class="p">(</span><span class="n">todolist</span><span class="p">,</span> <span class="s2">&quot;Start a reactor&quot;</span><span class="p">)</span>
+<span class="n">fabric</span><span class="o">.</span><span class="n">add_todo</span><span class="p">(</span><span class="n">todolist</span><span class="p">,</span> <span class="s2">&quot;Workk on a reactor&quot;</span><span class="p">,</span> <span class="s2">&quot;✗&quot;</span><span class="p">)</span>
+<span class="n">fabric</span><span class="o">.</span><span class="n">add_todo</span><span class="p">(</span><span class="n">todolist</span><span class="p">,</span> <span class="s2">&quot;Research a reactor&quot;</span><span class="p">,</span> <span class="s2">&quot;✓&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;science&#39;</span><span class="p">,</span> <span class="s1">&#39;todx&#39;</span><span class="p">])</span>
+
+<span class="n">filehandler</span><span class="o">.</span><span class="n">save_file</span><span class="p">(</span><span class="s2">&quot;data.json&quot;</span><span class="p">,</span> <span class="n">todolist</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-2'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-2'>#</a>
+      </div>
+      <p>print(jdump)</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-3'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-3'>#</a>
+      </div>
+      <p>with open(&ldquo;data.json&rdquo;, &ldquo;w&rdquo;) as data_file:
+    data_file.write(jdump)</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="n">tlist2</span> <span class="o">=</span> <span class="n">filehandler</span><span class="o">.</span><span class="n">load_file</span><span class="p">(</span><span class="s2">&quot;data.json&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">todo</span> <span class="ow">in</span> <span class="n">tlist2</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">todo</span><span class="p">)</span>
+
+</pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+</div>
+</body>

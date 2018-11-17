@@ -1,4 +1,6 @@
 # todxpy
+![Travis (.org)](https://img.shields.io/travis/xypnox/todxpy.svg?style=flat-square)
+
 A simple and easy to use yet configurable todo app.
 
 ## Installation
