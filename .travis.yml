@@ -2,6 +2,6 @@ language: python
 python:
   - "3.6"
 install:
-  - make install
+  - make build install
 script:
   - todx
