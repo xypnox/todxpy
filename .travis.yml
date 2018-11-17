@@ -6,4 +6,8 @@ install:
   - make build install
 script:
   - todx
+  - todx add Make me a sandwich +awesome +crazy
+  - todx
+  - todx -v
+  - todx +awesome
   - pytest
