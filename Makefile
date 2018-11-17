@@ -7,3 +7,6 @@ install:
 
 publish:
 	twine upload dist/*
+
+docs:
+	pycco todx/*.py
