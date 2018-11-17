@@ -21,6 +21,11 @@ class Todo:
         for tag in self.tags:
             output += stg.tag_decorator(tag)
         return output
+    
+    def __eq__(self, other):
+        if self.content == other.content and self.status == other.status and self.tags == other.tags:
+            return True
+        return False
 
     def without_tags(self):
         return '\033[31m' + stg.status_aliases(self.status) + '\033[0m  ' + self.content

@@ -54,7 +54,7 @@ $ todx
 
 To view todos that you that you have already marked also, run `todx view`.
 
-There are only few charecters that are recognised as a completed todo, they given below:
+There are only few characters that are recognized as a completed todo, they given below:
 
 | Character | Representation |
 | :-------: | :------------: |
