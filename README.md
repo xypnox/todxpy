@@ -1,5 +1,7 @@
 # todxpy
-![Travis (.org)](https://img.shields.io/travis/xypnox/todxpy.svg?style=flat-square)
+![Travis (.org)](https://img.shields.io/travis/xypnox/todxpy.svg?style=flat-square) 
+
+KWoC Communication channel: [![Gitter](https://img.shields.io/gitter/room/:user/:repo.svg?style=flat-square)](https://gitter.im/todxpy/Lobby)
 
 A simple and easy to use yet configurable todo app.
 
