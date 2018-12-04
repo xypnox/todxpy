@@ -11,7 +11,3 @@ script:
   - todx -v
   - todx +awesome
   - pytest
-  - deactivate
-  - pip uninstall todx -y
-  - pip install todx
-  - todx
