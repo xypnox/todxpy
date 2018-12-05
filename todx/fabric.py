@@ -39,11 +39,14 @@ class TodoWrapper:
     """
     A class that wraps the todos as a list and serves to have all the metadata about the todos
     """
-    def __init__(self):
-        self.createTime = ''
+    def __init__(self, createTime=time.gmtime()):
+        self.createTime = createTime
         self.username = ''
         self.cookie = ''
         self.tlist = []
+
+    def __len__(self):
+        return len(self.tlist)
 
 def view_list(twrap, only_left=False):
     """

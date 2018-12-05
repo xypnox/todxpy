@@ -10,10 +10,10 @@ twrap = fabric.TodoWrapper()
 twrap.createTime = time.gmtime()
 twrap.username = 'xypnox'
 twrap.cookie = 'abcdABCD'
-fabric.add_todo(twrap.tlist, "To make a reactor")
-fabric.add_todo(twrap.tlist, "Start a reactor")
-fabric.add_todo(twrap.tlist, "Workk on a reactor", "✗")
-fabric.add_todo(twrap.tlist, "Research a reactor", "✓", ['science', 'todx'])
+fabric.add_todo(twrap, "To make a reactor")
+fabric.add_todo(twrap, "Start a reactor")
+fabric.add_todo(twrap, "Workk on a reactor", "✗")
+fabric.add_todo(twrap, "Research a reactor", "✓", ['science', 'todx'])
 
 filehandler.save_file("data.json", twrap)
 # print(jdump)
@@ -27,5 +27,6 @@ print(twrap.username)
 print(twrap.cookie)
 print(twrap.createTime)
 print(time.gmtime()==twrap.createTime)
+print(len(twrap))
 for todo in twrap2.tlist:
     print(todo)

@@ -36,7 +36,7 @@ def load_file(filename):
         except OSError as exc: # Guard against race condition
             if exc.errno != errno.EEXIST:
                 raise
-        return []
+        return fabric.TodoWrapper()
 
     if os.path.isfile(filename):
         with open(filename, 'r+') as data_file:
@@ -44,7 +44,7 @@ def load_file(filename):
             return list_decoder(json.loads(read_data))
     else:
         with open(filename, 'w') as data_file:
-            return []
+            return fabric.TodoWrapper()
 
 def save_file(filename, data):
     """

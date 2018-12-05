@@ -14,7 +14,7 @@ def parse_modifier(newtodo, arg):
     # elif arg[1] == '':
 
 
-def parse_add(tlist, args):
+def parse_add(twrap, args):
     """
     Parse the add command
      - If no arguments prints help for add
@@ -26,7 +26,7 @@ def parse_add(tlist, args):
         print("Please provide at least one argument: content tags[optional]  status[optional]")
     
     elif len(args) == 2:
-        fabric.add_todo(tlist, args[1])
+        fabric.add_todo(twrap, args[1])
         print("Added todo + ", args[1])
     
     else:
@@ -36,41 +36,41 @@ def parse_add(tlist, args):
                 newtodo.content += arg + ' '
             else:
                 parse_modifier(newtodo, arg)
-        tlist.append(newtodo)
+        twrap.tlist.append(newtodo)
         print('Added todo: ', newtodo)
 
 
-def parse_mark(tlist, args):
+def parse_mark(twrap, args):
     """
     Parse mark command
     """
     if len(args) == 1:
-        if len(tlist) > 0:
-            fabric.index_view(tlist)
+        if len(twrap) > 0:
+            fabric.index_view(twrap)
             print()
             index = int(input("Which todo you want to mark: "))
-            if index < len(tlist):
-                tlist[index].status = input("What is your new status: ")
+            if index < len(twrap):
+                twrap.tlist[index].status = input("What is your new status: ")
             else:
                 print('Too large an Index, You have.')
         else:
             print("No todo list found")
 
 
-def parse_view(tlist, args):
+def parse_view(twrap, args):
     """
     Parse view command
      - If no other arguments are passed view every todo
      - if an argument is passed view todos tagged as the argument
     """
     if len(args) == 1:
-        fabric.view_list(tlist)
+        fabric.view_list(twrap)
         return
 
     if args[1][0] == '+':
         args[1] = args[1][1:]
 
-    index_list = searcher.find_index_tag(args[1], tlist)
+    index_list = searcher.find_index_tag(args[1], twrap.tlist)
 
     if len(index_list) == 0:
         print("No todos with tag " + stg.tag_decorator(args[1]) + " found!")
@@ -78,23 +78,23 @@ def parse_view(tlist, args):
     
     print(stg.tag_decorator(args[1]))
     for index in index_list[1:]:
-        print(tlist[index].without_tags())
+        print(twrap.tlist[index].without_tags())
 
 
-def parse_task(tlist, args):
+def parse_task(twrap, args):
     """
     Parse task command
      - If no other arguments are passed view every undone todo
      - if an argument is passed view undone todos tagged as the argument
     """
     if len(args) == 1:
-        fabric.view_list(tlist, only_left=True)
+        fabric.view_list(twrap, only_left=True)
         return
 
     if args[1][0] == '+':
         args[1] = args[1][1:]
 
-    index_list = searcher.find_index_tag(args[1], tlist)
+    index_list = searcher.find_index_tag(args[1], twrap.tlist)
     
     if len(index_list) == 0:
         print("No todos with tag " + stg.tag_decorator(args[1]) + " found!")
@@ -102,22 +102,22 @@ def parse_task(tlist, args):
     
     print(stg.tag_decorator(args[1]))
     for index in index_list[1:]:
-        if tlist[index].status not in stg.done_markers:
-            print(tlist[index].without_tags())
+        if twrap.tlist[index].status not in stg.done_markers:
+            print(twrap.tlist[index].without_tags())
 
 
-def parse_del(tlist, args):
+def parse_del(twrap, args):
     """
     Parse del command
     """
     if len(args) == 1:
-        if len(tlist) > 0:
-            fabric.index_view(tlist)
+        if len(twrap) > 0:
+            fabric.index_view(twrap)
             print()
             index = int(input("Which todo you want to delete: "))
-            if index < len(tlist):
+            if index < len(twrap):
                 if query_yes_no('Are you sure buddy?') is True:
-                    del tlist[index]
+                    del twrap.tlist[index]
             else:
                 print('Too large an Index, You have.')
         else:
