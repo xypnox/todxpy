@@ -12,21 +12,25 @@ def list_decoder(objs):
     """
     Function to parse the json list of dictionary into objects of TodoList.
     """
-    tlist = []
-    for obj in objs:
-        # print(obj)
+    # print(objs)
+    twrap = fabric.TodoWrapper()
+    twrap.createTime = objs['createTime']
+    twrap.username = objs['username']
+    twrap.cookie = objs['cookie']
+
+    for obj in objs['tlist']:
         if '__type__' in obj and obj['__type__'] == 'Todo':
             objT = fabric.Todo(obj['content'], obj['tags'], obj['status'])
         else:
             objT = obj
-        tlist.append(objT)
-    return tlist
+        twrap.tlist.append(objT)
+    return twrap
 
 def load_file(filename):
     """
     Function to load datafiles, it returns a list of Todo
     """
-    if not os.path.exists(os.path.dirname(filename)):
+    if not os.path.exists(os.path.dirname(filename)) and '/' in filename:
         try:
             os.makedirs(os.path.dirname(filename))
         except OSError as exc: # Guard against race condition
@@ -49,7 +53,3 @@ def save_file(filename, data):
     with open(filename, 'w+') as data_file:
         jsondata = json.dumps(data, default=jdefault, indent=4)
         data_file.write(jsondata)
-
-"""
-I understand that my json data encoder and decoder are absolute crap However they work and thats what is great. I have borrowed code from about 4 stackoverflow answers and used some trial and error to get to this stage. I would love to refactor it, but I would love to do a lot of other things, so this remains as it is. Do not modify this unless you are brave enough (and crazy enough).
-"""

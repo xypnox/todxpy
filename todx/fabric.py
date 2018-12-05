@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*- 
 from . import settings as stg
+import time
 
 class Todo:
     """
@@ -34,6 +35,15 @@ class Todo:
         self.status = status
 
 
+class TodoWrapper:
+    """
+    A class that wraps the todos as a list and serves to have all the metadata about the todos
+    """
+    def __init__(self):
+        self.createTime = ''
+        self.username = ''
+        self.cookie = ''
+        self.tlist = []
 
 def view_list(tlist, only_left=False):
     """
