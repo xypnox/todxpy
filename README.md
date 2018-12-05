@@ -31,7 +31,8 @@ $ todx -v
 This should output something like `TodX vX.X.X`  depending on your version number
 
 ## Troubleshoot Error
-If it doesn't work on Ubuntu you may troubleshoot the error by running the following commands:
+######  One of the reason of the error might be that your  .local/bin directory is not in path
+You may troubleshoot this error by running the following commands:
   * Open the terminal and type the following command to add a line at the end of .bashrc that it may troubleshoot the error
 ```bash
 $ echo "export $PATH=~/.local/bin:$PATH" >> ~/.bashrc
