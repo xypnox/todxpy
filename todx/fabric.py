@@ -45,37 +45,37 @@ class TodoWrapper:
         self.cookie = ''
         self.tlist = []
 
-def view_list(tlist, only_left=False):
+def view_list(twrap, only_left=False):
     """
     View todos
     """
     # print()
     if only_left == False:
-        for todo in tlist:
+        for todo in twrap.tlist:
             print(todo)
     else:
-        for todo in tlist:
+        for todo in twrap.tlist:
             if todo.status not in stg.done_markers:
                 print(todo)
 
-def index_view(tlist, only_left=False):
+def index_view(twrap, only_left=False):
     """
     View list's todos with indexes
     """
     if only_left == True:
-        for i, todo in enumerate(tlist):
+        for i, todo in enumerate(twrap.tlist):
             if todo.status not in stg.done_markers:
                 print(i, todo)
     else:
-        for i, todo in enumerate(tlist):
+        for i, todo in enumerate(twrap.tlist):
             print(i, todo)
 
-def todo_view(tlist, index):
+def todo_view(twrap, index):
     """
     View a specific todo of given index
     """
     try:
-        print(tlist[index])
+        print(twrap.tlist[index])
     except IndexError:
         print("ERROR: The given index doesn't exist")
 
@@ -87,12 +87,12 @@ def todo_view(tlist, index):
 #         print("Tags :", str(self.tags).strip('[]'))
 #     print()
 
-def add_todo(tlist, content, status=" ", tags=[]):
-    tlist.append(Todo(content, status=status, tags=tags))
+def add_todo(twrap, content, status=" ", tags=[]):
+    twrap.tlist.append(Todo(content, status=status, tags=tags))
 
-def delete_todo(tlist, index):
+def delete_todo(twrap, index):
     try:
-        tlist.pop(index)
+        twrap.tlist.pop(index)
     except IndexError:
         print("ERROR: The given index doesn't exist")
 
