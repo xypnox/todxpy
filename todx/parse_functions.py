@@ -35,7 +35,10 @@ def parse_add(twrap, args):
             if fabric.check_modifier(arg) is False:
                 newtodo.content += arg + ' '
             else:
-                parse_modifier(newtodo, arg)
+                if len(arg)==1:
+                    newtodo.content +=arg + ' '
+                else:
+                    parse_modifier(newtodo, arg)
         twrap.tlist.append(newtodo)
         print('Added todo: ', newtodo)
 
