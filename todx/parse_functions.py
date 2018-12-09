@@ -1,7 +1,8 @@
 from . import fabric
 from . import searcher
+import readline
 from . import settings as stg
-from .yesnoquery import query_yes_no
+from . yesnoquery import query_yes_no
 
 def parse_modifier(newtodo, arg):
     """
@@ -125,3 +126,31 @@ def parse_del(twrap, args):
                 print('Too large an Index, You have.')
         else:
             print("No todo list found")
+
+def rlinput(prompt, prefill=''):
+   readline.set_startup_hook(lambda: readline.insert_text(prefill))
+   try:
+      return input(prompt)
+   finally:
+      readline.set_startup_hook()
+
+def parse_edit(twrap, args):
+    """
+    Parse edit command
+    """
+    if len(args) == 1:
+        print(twrap.tlist)
+        if len(twrap.tlist) > 0:
+            fabric.index_view(twrap)
+            print()
+            index = int(input("Which todo you want to edit: "))
+            if index < len(twrap):
+                sub_str=rlinput("edit here : ",twrap.tlist[index].content)
+                if query_yes_no('Are you sure buddy?') is True:
+                    twrap.tlist[index].content=sub_str
+            else:
+                print('Too large an Index, You have.')
+        else:
+            print("No todo list found")
+
+
