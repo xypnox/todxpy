@@ -139,15 +139,16 @@ def parse_edit(twrap, args):
     Parse edit command
     """
     if len(args) == 1:
-        print(twrap.tlist)
         if len(twrap.tlist) > 0:
             fabric.index_view(twrap)
             print()
             index = int(input("Which todo you want to edit: "))
             if index < len(twrap):
                 sub_str=rlinput("edit here : ",twrap.tlist[index].content)
-                if query_yes_no('Are you sure buddy?') is True:
-                    twrap.tlist[index].content=sub_str
+                if len(sub_str)==0 : print("todo item cannot be empty")
+                else:
+                    if query_yes_no('Are you sure buddy?') is True:
+                        twrap.tlist[index].content=sub_str
             else:
                 print('Too large an Index, You have.')
         else:
