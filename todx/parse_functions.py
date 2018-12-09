@@ -36,8 +36,8 @@ def parse_add(twrap, args):
             if fabric.check_modifier(arg) is False:
                 newtodo.content += arg + ' '
             else:
-                if len(arg)==1:
-                    newtodo.content +=arg + ' '
+                if len(arg) == 1:
+                    newtodo.content += arg + ' '
                 else:
                     parse_modifier(newtodo, arg)
         twrap.tlist.append(newtodo)
@@ -127,7 +127,7 @@ def parse_del(twrap, args):
         else:
             print("No todo list found")
 
-def rlinput(prompt, prefill=''):
+def rlinput(prompt, prefill = ''):
    readline.set_startup_hook(lambda: readline.insert_text(prefill))
    try:
       return input(prompt)
@@ -139,16 +139,17 @@ def parse_edit(twrap, args):
     Parse edit command
     """
     if len(args) == 1:
-        if len(twrap.tlist) > 0:
+        if len(twrap) > 0:
             fabric.index_view(twrap)
             print()
             index = int(input("Which todo you want to edit: "))
             if index < len(twrap):
-                sub_str=rlinput("edit here : ",twrap.tlist[index].content)
-                if len(sub_str)==0 : print("todo item cannot be empty")
+                sub_str = rlinput("edit here : ",twrap.tlist[index].content)
+                if len(sub_str) == 0 : 
+                    print("todo item cannot be empty")
                 else:
                     if query_yes_no('Are you sure buddy?') is True:
-                        twrap.tlist[index].content=sub_str
+                        twrap.tlist[index].content = sub_str
             else:
                 print('Too large an Index, You have.')
         else:
