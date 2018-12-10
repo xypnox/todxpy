@@ -155,4 +155,28 @@ def parse_edit(twrap, args):
         else:
             print("No todo list found")
 
+def parse_tags(twrap, args):
+    """
+    Parse tags command
+    """
+    if len(args) == 1:
+        if len(twrap) > 0:
+            fabric.index_view(twrap)
+            print()
+            index = int(input("Which todo tags do you want to edit: "))
+            if index < len(twrap) and index > -1:
+                cur_tags = [ i for i in twrap.tlist[index].tags ]
+                print("current tags : ",' , '.join(i for i in twrap.tlist[index].tags))
+                sub_str = input("do +[tag] to add , -[tag] to remove : ")
+                sub_str = [i for i in sub_str.split()]
+                for i in sub_str:
+                    if i[0] == '+' and len(i) > 1:
+                        twrap.tlist[index].tags.append(i[1:])
+                    elif i[0] == '-' and i[1:] in cur_tags:
+                        twrap.tlist[index].tags.remove(i[1:])        
+            else:
+                print('Invalid Index, You have.')
+        else:
+            print("No todo list found")
+
 
