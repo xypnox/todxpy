@@ -163,7 +163,6 @@ def parse_tags(twrap, args):
         if len(twrap) > 0:
             fabric.index_view(twrap)
             print()
-            index = -1
             index = int(input("Which todo tags do you want to edit: "))
             if index < len(twrap) and index > -1:
                 cur_tags = [ i for i in twrap.tlist[index].tags ]
