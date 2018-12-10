@@ -36,6 +36,9 @@ def main_command():
 
     elif args[0] == 'edit':
         pf.parse_edit(twrap, args)
+
+    elif args[0] == 'tags':
+        pf.parse_tags(twrap, args)
     
     elif args[0] == 'del':
         pf.parse_del(twrap, args)
