@@ -1,6 +1,7 @@
 from . import fabric
 from . import searcher
 import readline
+import cutie
 from . import settings as stg
 from . yesnoquery import query_yes_no
 
@@ -52,9 +53,16 @@ def parse_mark(twrap, args):
         if len(twrap) > 0:
             fabric.index_view(twrap)
             print()
-            index = int(input("Which todo you want to mark: "))
+            print("Which todo do you want to mark: ")
+            selection = twrap[cutie.select(twrap)]
+            index = twrap.index(selection)
+            
+            #index = int(input("Which todo you want to mark: "))
             if index < len(twrap):
-                twrap.tlist[index].status = input("What is your new status: ")
+                stats = ['x', 'v', ' ']
+                print("What is your new status: ")
+                twrap[index].status = stats[cutie.select(stats)]
+                #twrap[index].status = input("What is your new status: ")
             else:
                 print('Too large an Index, You have.')
         else:
@@ -118,10 +126,13 @@ def parse_del(twrap, args):
         if len(twrap) > 0:
             fabric.index_view(twrap)
             print()
-            index = int(input("Which todo you want to delete: "))
+            print("Which todo do you want to delete: ")
+            selection = twrap[cutie.select(twrap)]
+            index = twrap.index(selection)
+            #index = int(input("Which todo you want to delete: "))
             if index < len(twrap):
                 if query_yes_no('Are you sure buddy?') is True:
-                    del twrap.tlist[index]
+                    del twrap[index]
             else:
                 print('Too large an Index, You have.')
         else:
