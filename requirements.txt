@@ -1,3 +1,4 @@
 appdirs
 fuzzywuzzy[speedup]
 pytest
+cutie
