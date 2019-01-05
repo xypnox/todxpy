@@ -3,7 +3,7 @@ python:
   - "3.6"
 install:
   - pip3 install -r requirements.txt
-  - make build install
+  - make build install-travis
 script:
   - todx
   - todx add Make me a sandwich +awesome +crazy
