@@ -1,0 +1,12 @@
+usage: todx [option] ... [cmd]
+add or -a:  Adds an entry to your todo file.
+            todx add <your entry>
+mark or -m: Assigns a status to your todos
+            todx mark
+            Which todo you want to mark:<Select your option>
+            What is your new status: <Enter status>
+view      : View all your todos
+            todx view
+del       : Delets an item from your todo list
+            todx del
+version or --v: Version of the software
