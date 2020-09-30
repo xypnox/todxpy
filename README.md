@@ -8,7 +8,7 @@ A simple and easy to use yet configurable todo app.
 
 ![todx screenshot](https://i.imgur.com/mo0pSqg.png)
 
-## Installation
+## Installation -An amezing project
 
 To install the program run
 
