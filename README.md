@@ -56,7 +56,7 @@ $ todx -v
 
 - If the error had been removed successfully it would show you the version of todx.
 
-## Usage
+## Usage of this project
 
 You can add todos using the `todx add` command:
 
