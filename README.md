@@ -103,7 +103,7 @@ To view todos of current tags use `todx +tagname`
 
 A detailed blogpost covering the use is at : https://xypnox.github.io/blag/posts/todx-the-todo-manager/
 
-## Contribution
+## Contribution_ In this amazing project
 
 Contributions are welcomed, any `bug fixes` or new feature is `great`.
 
