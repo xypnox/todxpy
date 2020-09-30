@@ -28,7 +28,7 @@ To check whether the installation was successful run:
 $ todx -v
 ```
 
-This should output something like `TodX vX.X.X` depending on your version number
+This should give output like `TodX vX.X.X` depending on your version number
 
 ## Troubleshoot Error
 
