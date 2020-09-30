@@ -56,7 +56,7 @@ $ todx -v
 
 - If the error had been removed successfully it would show you the version of todx.
 
-## Usage
+## Usage of this project
 
 You can add todos using the `todx add` command:
 
@@ -107,7 +107,7 @@ A detailed blogpost covering the use is at : https://xypnox.github.io/blag/posts
 
 Contributions are welcomed, any `bug fixes` or new feature is `great`.
 
-###### Contribution Guidelines
+###### only for Contribution Guidelines
 
 - Raise an issue regarding it.
 - Fix it and make a pull request if it woule be worth your pull request will get merged.
