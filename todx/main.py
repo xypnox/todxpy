@@ -46,9 +46,8 @@ def main_command():
         print('TodX v' + stg.version)
 
     elif args[0] == '--help' or args[0] == '-h':
-        file_reader=open('todx/man.txt','r')
-        print(file_reader.read())
-
+        with open('todx/man.txt','r') as file_reader:
+            print(file_reader.read())
 
     elif args[0][0] == '+':
         args.insert(0, 'task')
