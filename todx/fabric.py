@@ -7,7 +7,9 @@ class Todo:
     A class to represent a single todo
     A todo has content and status, default status is blank
     """
-    def __init__(self, content='', tags=[], status=' '):
+    def __init__(self, content='', tags=None, status=' '):
+        if tags is None:
+            tags = []
         self.__type__ = "Todo"
         self.content = content
         self.status = status
@@ -90,7 +92,9 @@ def todo_view(twrap, index):
 #         print("Tags :", str(self.tags).strip('[]'))
 #     print()
 
-def add_todo(twrap, content, status=" ", tags=[]):
+def add_todo(twrap, content, status=" ", tags=None):
+    if tags is None:
+        tags = []
     twrap.tlist.append(Todo(content, status=status, tags=tags))
 
 def delete_todo(twrap, index):
