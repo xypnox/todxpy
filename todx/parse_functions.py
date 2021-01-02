@@ -165,7 +165,7 @@ def parse_tags(twrap, args):
             print()
             index = int(input("Which todo tags do you want to edit: "))
             if index < len(twrap) and index > -1:
-                cur_tags = [ i for i in twrap.tlist[index].tags ]
+                cur_tags = list(twrap.tlist[index].tags)
                 print("current tags : ",' , '.join(i for i in twrap.tlist[index].tags))
                 sub_str = input("do +[tag] to add , -[tag] to remove : ")
                 sub_str = [i for i in sub_str.split()]

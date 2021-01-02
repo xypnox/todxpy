@@ -7,7 +7,9 @@ class Todo:
     A class to represent a single todo
     A todo has content and status, default status is blank
     """
-    def __init__(self, content='', tags=[], status=' '):
+    def __init__(self, content='', tags=None, status=' '):
+        if tags is None:
+            tags = []
         self.__type__ = "Todo"
         self.content = content
         self.status = status
@@ -53,7 +55,7 @@ def view_list(twrap, only_left=False):
     View todos
     """
     # print()
-    if only_left == False:
+    if only_left is False:
         for todo in twrap.tlist:
             print(todo)
     else:
@@ -65,7 +67,7 @@ def index_view(twrap, only_left=False):
     """
     View list's todos with indexes
     """
-    if only_left == True:
+    if only_left is True:
         for i, todo in enumerate(twrap.tlist):
             if todo.status not in stg.done_markers:
                 print(i, todo)
@@ -90,7 +92,9 @@ def todo_view(twrap, index):
 #         print("Tags :", str(self.tags).strip('[]'))
 #     print()
 
-def add_todo(twrap, content, status=" ", tags=[]):
+def add_todo(twrap, content, status=" ", tags=None):
+    if tags is None:
+        tags = []
     twrap.tlist.append(Todo(content, status=status, tags=tags))
 
 def delete_todo(twrap, index):
